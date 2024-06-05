@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<br>
+<br>
+<hr>
+<h2 class ="text-center">Customers Page</h2>
+<br>
+<hr>
+<div class = "col-md-6 offset-md-3">
+    <form method="POST" action="">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+
+        <input type="submit" value="Add" class=" btn btn-secondary form-control">
+    </form>
+</div>
+{% endblock content %}

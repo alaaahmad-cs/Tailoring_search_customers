@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<br>
+<hr>
+<div class = "col-md-6 offset-md-4" style="color: gray;">
+<h1>ابحث عن الزبون</h1>
+</div>
+<hr>
+<div class = "col-md-6 offset-md-3">
+    <div class="card">
+        <h5 class="card-header">ابحث هنا!!</h5>
+        <div class="card-body">
+            <form method="post" action="{% url 'search_name' %}">
+                {% csrf_token %} 
+                <div class="mb-3">
+                  <input type="text" class="form-control" name="searched" placeholder="اكتب اي معلومه عن الزبون">
+                </div>
+    
+                <button type="submit" class="btn btn-primary">ابحث</button>
+              </form>
+        </div>
+      </div>
+      <br>
+      <br>
+      {% if searched %}
+      {% for customer in searched %}
+      <div class="card w-75 mb-3">
+        <div class="card-body">
+          <h5 class="card-title">الاسم: {{customer.name}}</h5>
+          <p class="card-text">القياس: {{customer.size}}</p>
+          <p class="card-text">رقم الهاتف: {{customer.phone}}</p>
+        </div>
+      </div>
+          {% endfor %}
+      {% endif %}
+</div>
+{% endblock content %}

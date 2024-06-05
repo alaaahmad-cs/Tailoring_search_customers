@@ -1,0 +1,23 @@
+
+                              
+{% extends 'base.html' %}
+{% block title %} Delete Customer !...{{customer_id.name}} {% endblock title %}
+{% block content %}
+<h1>حذف الزبون!!!</h1>
+<h5>اسم الزبون : {{customer.name}}</h5>
+<br>
+            <div class="form-group">
+                    <form action="{% url 'home' %}" method="post">
+                        {% csrf_token %}
+
+                        <div class="alert alert-danger" role="alert">
+                            <small> هل انت متاكد من حذف هذا الزبون <h3>{{customer.name}}?</h3> </small>
+                            </div>
+                        
+                        <button class="btn btn-secondary">حذف</button>
+                    </form>
+                </div>
+   
+   
+       
+{% endblock content%}
